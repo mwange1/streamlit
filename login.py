@@ -14,11 +14,11 @@ def login():
     password = st.text_input("Password", type="password")
 
     if st.button("Log in"):
-        if username == "admin" and password == "password":  # Replace with your desired credentials
+        if username == "admin" and password == "admin":  # Replace with your desired credentials
             st.session_state.logged_in = True
             st.success("Successfully logged in!")
             sleep(1)
-            st.experimental_set_query_params(logged_in=True)  # Simulate page reload
+            st.query_params(logged_in=True)  # Simulate page reload
         else:
             st.error("Incorrect username or password")
 
@@ -27,7 +27,7 @@ def logout():
     st.session_state.logged_in = False
     st.success("You have been logged out.")
     sleep(1)
-    st.experimental_set_query_params(logged_in=False)  # Simulate page reload
+    st.query_params(logged_in=False)  # Simulate page reload
 
 # App logic depending on login status
 if st.session_state.logged_in:
